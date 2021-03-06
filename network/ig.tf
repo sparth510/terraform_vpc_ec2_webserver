@@ -7,3 +7,8 @@ resource "aws_internet_gateway" "ig" {
     Name = "IG-Public-&-Private-VPC"
   }
 }
+
+output "internetgateway" {
+  value = aws_internet_gateway.ig.id
+  
+}
