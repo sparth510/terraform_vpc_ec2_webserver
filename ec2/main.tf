@@ -112,6 +112,7 @@ module "network" {
   source = "../network"
 }
 resource "time_sleep" "wait_120_seconds" {
+  depends_on = [aws_autoscaling_group.autoscaling-web-group,aws_autoscaling_attachment.autoscaling-web-group]
   create_duration = "120s"
 }
 

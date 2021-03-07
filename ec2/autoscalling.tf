@@ -15,13 +15,13 @@ resource "aws_launch_configuration" "autoscale" {
           "echo \"/dev/sda2 /var/log ext4 defaults,nofail 0 2\" >> /etc/fstab\n",
           "mount -a\n"
             EOF
-  ebs_block_device  {
-      device_name           = "/dev/sda2"
-      volume_type           = "gp2"
-      volume_size           = "10"
-      delete_on_termination = true
-    }
-  
+  ebs_block_device {
+    device_name           = "/dev/sda2"
+    volume_type           = "gp2"
+    volume_size           = "10"
+    delete_on_termination = true
+  }
+
   lifecycle {
     create_before_destroy = true
   }

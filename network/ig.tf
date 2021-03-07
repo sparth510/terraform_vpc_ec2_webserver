@@ -10,5 +10,5 @@ resource "aws_internet_gateway" "ig" {
 
 output "internetgateway" {
   value = aws_internet_gateway.ig.id
-  
+
 }
