@@ -1,7 +1,7 @@
 # terraform_vpc_ec2_volume_webserver
 ## prerequisite
-- terraform 0.12 versio requiment
-- aws cli configure requiment
+- terraform 0.12 version requiment
+- configure aws cli 
 
 # How To Use
 - first command install plugin of terraform
@@ -17,7 +17,7 @@ terraform plan
 ```
 terraform apply
 ```
-## what modules use in this script
+## modules use in this script
 - in script we are use two module use 
     - first module is **network** : for more understand please follow this [link](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/main/network/README.md)
     - second module is **ec2** : for more understand please follow this [link](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/main/ec2/README.md)
