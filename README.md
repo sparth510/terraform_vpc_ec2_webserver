@@ -1,6 +1,6 @@
 # terraform_vpc_ec2_volume_webserver
 ## prerequisite
-- terraform 0.12 version requiment
+- terraform 0.12 version requirement
 - configure aws cli 
 
 # How To Use
