@@ -3,17 +3,17 @@
 
 ### Instance
 - Instance will be in private subnet
-- we are use **amazon linux**.for latest ami we are use [data source](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/main.tf#L1)
-- for create ec2 instance we are using **aws_launch_configuration**, if you want to add pem file into our server that time add the [pemkey](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/d44449f5ebd90f282a8d6c701ab92e811797935a/ec2/variable.tf#L12) and [uncomment](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/d44449f5ebd90f282a8d6c701ab92e811797935a/ec2/autoscalling.tf#L6)
-- for change instance tyrp change [here](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/d44449f5ebd90f282a8d6c701ab92e811797935a/ec2/variable.tf#L10)
+- We are using **amazon linux**,latest ami we are use [data source](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/main.tf#L1)
+- We are using **aws_launch_configuration** for creating ec2 instance 
+- To change instance type change [here](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/d44449f5ebd90f282a8d6c701ab92e811797935a/ec2/variable.tf#L10)
 
 ## Loadbalancer
-- create loadblaencer , used resource [aws_lb](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/main.tf#L62) loadbalancer is is creating on public subnet
-- targate group we are use resource [aws_lb_target_group](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/main.tf#L77)
+- We are creating loadbalancerr in public subnet using terraform resource [aws_lb](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/main.tf#L62) 
+ and attaching targate group to loadbalancer using terraform resource [aws_lb_target_group](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/main.tf#L77)
 ## Autoscaling 
 
-- for autoscaling , resouce name is [aws_autoscaling_group](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/main.tf#L102) and if you are change min,max and desired size of [instacne](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/main.tf#L102s) change the aws_autoscaling_group
-- for attach our autoscaling group to application load balancer attachment we are use resource [aws_autoscaling_attachment](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/autoscalling.tf#L29)
+-  We are createing autoscaling using terraform resouce  [aws_autoscaling_group](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/main.tf#L102) 
+- For attaching our autoscaling group to application load balancer attachment we are using terraform resource [aws_autoscaling_attachment](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/autoscalling.tf#L29)
 
 ## Volume
-- secondery volume add use resource is [aws_launch_configuration](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/autoscalling.tf#L18) and mount for instance we are use [user_data](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/autoscalling.tf#L14)
+- Secondery volume attached using terrafrom resource is [aws_launch_configuration](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/autoscalling.tf#L18) and mounting to instance with [user_data](https://github.com/sparth510/terraform_vpc_ec2_webserver/blob/e93b5906628f906a64878fa3e89bc7b68abec396/ec2/autoscalling.tf#L14) script

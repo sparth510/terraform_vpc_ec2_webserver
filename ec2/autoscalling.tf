@@ -27,7 +27,7 @@ resource "aws_launch_configuration" "autoscale" {
   }
 }
 resource "aws_autoscaling_attachment" "autoscaling-web-group" {
-  depends_on             = [aws_autoscaling_group.autoscaling-web-group, aws_lb.web,]
+  depends_on             = [aws_autoscaling_group.autoscaling-web-group, aws_lb.web]
   autoscaling_group_name = aws_autoscaling_group.autoscaling-web-group.id
   alb_target_group_arn   = aws_lb_target_group.web.arn
 }

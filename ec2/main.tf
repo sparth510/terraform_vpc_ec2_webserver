@@ -116,5 +116,6 @@ resource "time_sleep" "wait_120_seconds" {
 }
 
 output "lb_address" {
+   depends_on = [aws_autoscaling_attachment.autoscaling-web-group]
   value = aws_lb.web.dns_name
 }
