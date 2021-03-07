@@ -9,6 +9,6 @@ variable "az" {
 variable "instance_type" {
   default = "t2.medium"
 }
-variable "keyname" {
+variable "key_name" {
   default = []
 }

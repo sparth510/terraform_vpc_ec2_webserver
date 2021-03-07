@@ -1,9 +1,9 @@
 ## Creating Launch Configuration
-resource "aws_launch_configuration" "example" {
+resource "aws_launch_configuration" "autoscale" {
   image_id        = data.aws_ami.ami.id
   instance_type   = var.instance_type
   security_groups = ["${aws_security_group.instance_sg.id}"]
-  # key_name               = "${var.key_name}"
+  # key_name               = var.key_name
   user_data = <<EOF
           #! /bin/bash
           sudo yum update -y

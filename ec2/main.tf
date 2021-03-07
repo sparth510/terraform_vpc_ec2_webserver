@@ -81,8 +81,8 @@ resource "aws_lb_target_group" "web" {
   vpc_id   = module.network.vpc
   health_check {
     healthy_threshold   = 2
-    interval            = 30
-    timeout             = 10
+    interval            = 10
+    timeout             = 5
     unhealthy_threshold = 2
   }
 }
@@ -100,7 +100,7 @@ resource "aws_lb_listener" "web-listener" {
 
 ## autoscalling group
 resource "aws_autoscaling_group" "autoscaling-web-group" {
-  launch_configuration = aws_launch_configuration.example.id
+  launch_configuration = aws_launch_configuration.autoscale.id
   desired_capacity    = 1
   max_size            = 1
   min_size            = 1
@@ -110,6 +110,9 @@ resource "aws_autoscaling_group" "autoscaling-web-group" {
 
 module "network" {
   source = "../network"
+}
+resource "time_sleep" "wait_120_seconds" {
+  create_duration = "120s"
 }
 
 output "lb_address" {
